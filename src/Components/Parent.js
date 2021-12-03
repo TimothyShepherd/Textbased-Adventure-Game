@@ -17,6 +17,10 @@ export function Par()  {
             </h2>
             <BTNOutput/>
             <Buttonks/>
+            <h2>The following allows access and printing of crucial stats for the weapons. Allows for weapon switching
+                and displays the skills each item allows, as well as the multiplier each one has.
+
+            </h2>
             <Options2/>
         </div>
     )

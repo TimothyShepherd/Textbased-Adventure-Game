@@ -1,4 +1,3 @@
-import React from "react";
 import { useDispatch, useSelector } from "react-redux";
 
 //Define a component that will use dispatcher
@@ -8,6 +7,7 @@ const Options2 = () => {
     const player = useSelector(state => state.player)
     const abilities = useSelector(state => state.abilities)
     const currentWeapon = useSelector(state => state.player.currentWeapon)
+    const enemies = useSelector(state =>state.enemies)
     const inventory = player.inventory
 
     //Dispatch actually SENDS AN OBJECT
@@ -45,6 +45,14 @@ const Options2 = () => {
                 }
 
             </ol>
+
+            <h2>List enemies: </h2><ol>
+                {Object.keys(enemies).map((key)=><li key={key}>{enemies[key].name+"\thp: "+enemies[key].hp+"\t weapon: "+enemies[key].weapon+"\t xp granted: "+enemies[key].xp}</li>)}
+            
+                
+
+            </ol>
+
         </div>
     )
 

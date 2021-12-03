@@ -34,12 +34,15 @@ const Buttonks = () => {
     }
 
     //Inventory
-    const payloadAdd = () => {
-        dispatch({ type: 'addItem', payload: "axe" })
+    const payloadAdd = (e) => {
+        let x = e.target.value
+        
+        dispatch({ type: 'addItem', payload: x })
     }
-
-    const payloadRemove = () => {
-        dispatch({ type: 'removeItem', payload: "axe" })
+    //This function is suddenly working WITH input, usually it... failed
+    const payloadRemove = (e) => {
+        let x = e.target.value
+        dispatch({ type: 'removeItem', payload: x })
     }
 
     //Current held item
@@ -60,8 +63,14 @@ const Buttonks = () => {
             <button onClick={moveY} className="btn btn-primary"> Move Y</button><br /><br />
             <button onClick={backX} className="btn btn-danger"> Back X</button>
             <button onClick={backY} className="btn btn-danger"> Back Y</button><br /><br />
-            <button onClick={payloadAdd} className="btn btn-danger"> Add Axes</button>
-            <button onClick={payloadRemove} className="btn btn-danger"> Remove Axes</button><br /><br />
+            <button onClick={payloadAdd} value ="axe" className="btn btn-secondary"> Add Axes</button>
+            <button onClick={payloadRemove} value ="axe" className="btn btn-danger"> Remove Axes</button><br /><br />
+            <button onClick={payloadAdd} value ="sword" className="btn btn-secondary"> Add sword</button>
+            <button onClick={payloadRemove} value ="sword" className="btn btn-danger"> Remove sword</button><br /><br />
+            <button onClick={payloadAdd} value ="boxing_gloves" className="btn btn-secondary"> Add boxing gloves</button>
+            <button onClick={payloadRemove} value ="boxing_gloves" className="btn btn-danger"> Remove boxing gloves</button><br /><br />
+            <button onClick={payloadAdd} value ="knife" className="btn btn-secondary"> Add knifes</button>
+            <button onClick={payloadRemove} value ="knife" className="btn btn-danger"> Remove knifes</button><br /><br />
             <button onClick={xpAdd} id="54" value={15} className="btn btn-primary"> Add 15 xp</button><br /><br />
         </div>
     )

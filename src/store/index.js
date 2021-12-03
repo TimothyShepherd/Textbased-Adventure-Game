@@ -10,11 +10,6 @@ const initialState = {
         inventory: {
             //These can't be sold
             fists: 2,
-            sword: 0,
-            axe: 0,
-            boxing_gloves: 0,
-            knife: 0
-
         },
         xp: {
             level: 1,
@@ -26,9 +21,9 @@ const initialState = {
         fists: { att: 5, def: 5, spd: 20, 
             skills:["punch","jab","defend"]},
         sword: { att: 10, def: 12, spd: 10, 
-            skills:["stab","slice","defend"]},
+            skills:["stab","slice","parry","defend"]},
         axe: {
-            att: 15, def: 5, spd: 11,
+            att: 15, def: 5, spd: 8,
             skills:["strike","slice","smash","defend"]
         },
         boxing_gloves: { att: 6, def: 8, spd: 20 ,
@@ -45,6 +40,7 @@ const initialState = {
         //sword and knife
         stab: { attMul: 2, defMul: 0, spd: 1.5 },
         slice: { attMul: 1, defMul: 1, spd: 2 },
+        parry: { attMul: .2, defMul: 1.5, spd: 20 },
         //all
         defend: { attMul: 0, defMul: 2, spd: 10 },
 
@@ -55,7 +51,35 @@ const initialState = {
         punch: { attMul: .5, defMul: .8, spd: 1 },
         jab: { attMul: .3, defMul: .9, spd: 1.5 },
         overhead: { attMul: 2, defMul: .6, spd: .5 }
+    },
+    //On defeat, drop weapon and 
+    enemies:{
+        Jester:{
+            name:"Jest",
+            hp:50,
+            weapon:"fists",
+            xp:50
+        },
+        Bucaneer:{
+            name:"Javaneer",
+            hp:75,
+            weapon:"knife",
+            xp:60
+        },
+        First_Mate:{
+            name:"First M8",
+            hp:80,
+            weapon:"boxing_gloves",
+            xp:80
+        },
+        Pirate_lord:{
+            name:"BlueBeard",
+            hp:100,
+            weapon:"sword",
+            xp:0
+        }
     }
+    
 
 }
 
@@ -98,19 +122,33 @@ const counterModify = (state = initialState, action) => {
     //inventory
     //Adds item based on name
     if (action.type === "addItem") {
-        let current = state.player.inventory[action.payload]
+        let current = state.player.inventory[action.payload]||0
         let inventory = { ...state.player.inventory, [action.payload]: current + 1 }
         let player = { ...state.player, inventory }
+        
         return { ...state, player }
     }
     //Removes item based on name, minimum of zero
     if (action.type === "removeItem") {
         let current = state.player.inventory[action.payload]
-        if (current > 0) {
+        if (current > 1) {
             let inventory = { ...state.player.inventory, [action.payload]: current - 1 }
             let player = { ...state.player, inventory }
+            
             return { ...state, player }
         }
+        else{
+            
+            let inventory = { ...state.player.inventory}
+            delete inventory[action.payload]
+            let player = { ...state.player, inventory }
+            if(player.currentWeapon==action.payload){
+                player = { ...player,currentWeapon:"fists"}
+            }
+            
+            return { ...state, player }
+        }
+        
     }
 
     //Adds item based on name

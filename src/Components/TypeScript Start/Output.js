@@ -20,7 +20,7 @@ const BTNOutput=()=>{
             </h1>
             <br/>
             <h1>
-                Number of Axes (added through addItem, not as individual instances): {player.inventory.axe}
+                Number of Axes (added through addItem, not as individual instances): {player.inventory.axe||0}
             </h1>
             <br/>
 
