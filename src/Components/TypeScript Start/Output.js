@@ -6,7 +6,7 @@ const BTNOutput=()=>{
     const player = useSelector(state => state.player)
 
     return(
-        <div>
+        <div className = "printing">
             <h1>
                 Gold earned: {value}
             </h1>
@@ -23,6 +23,14 @@ const BTNOutput=()=>{
                 Number of Axes (added through addItem, not as individual instances): {player.inventory.axe}
             </h1>
             <br/>
+
+            <h1>
+                Current Level: {player.xp.level}
+            </h1>
+            <br/>
+            <h1>
+                Current amount of XP (leves on 100): {player.xp.number}
+            </h1>
 
         </div>
     )

@@ -2,6 +2,7 @@
 import React from 'react';
 
 import Buttonks from './buttonsStore';
+import Options2 from './moreOptions';
 import BTNOutput from './TypeScript Start/Output';
 export function Par()  {
 
@@ -16,6 +17,7 @@ export function Par()  {
             </h2>
             <BTNOutput/>
             <Buttonks/>
+            <Options2/>
         </div>
     )
 }
