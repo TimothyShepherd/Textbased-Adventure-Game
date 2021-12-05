@@ -4,6 +4,7 @@ import { createStore } from "redux";
 const initialState = {
     gold: 0,
     player: {
+        hp:100,
         x: 0,
         y: 0,
         currentWeapon: "fists",
@@ -177,6 +178,21 @@ const counterModify = (state = initialState, action) => {
     if (action.type === "weaponSelect") {
 
         let player = { ...state.player, currentWeapon: (action.payload) }
+        return { ...state, player }
+    }
+
+    //hp methods
+    //raise hp
+    if (action.type === "hpInc") {
+        let value = state.player.hp + action.payload
+        if(value>100){value = 100}
+        let player = { ...state.player, hp: value }
+        return { ...state, player }
+    }
+    if (action.type === "hpDec") {
+        let value = state.player.hp - action.payload
+        if(value<0){value = 0}
+        let player = { ...state.player, hp: value }
         return { ...state, player }
     }
 

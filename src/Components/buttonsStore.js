@@ -55,8 +55,19 @@ const Buttonks = () => {
         dispatch({ type: 'addXp', payload: x })
     }
 
+    //HP management functions
+    const hpInc=()=>{
+        dispatch({ type: 'hpInc', payload: 15 })
+    }
+
+    const hpDec=()=>{
+        dispatch({ type: 'hpDec', payload: 20 })
+    }
+
     return (
         <div className="printing">
+            <button onClick={hpInc} className="btn btn-primary"> Raise hp by 10</button>
+            <button onClick={hpDec} className="btn btn-danger"> Remove hp by 20</button><br /><br />
             <button onClick={inc} className="btn btn-primary"> Crease</button>
             <button onClick={dec} className="btn btn-danger"> Decrease</button><br /><br />
             <button onClick={moveX} className="btn btn-primary"> Move X</button>

@@ -8,6 +8,11 @@ const BTNOutput=()=>{
     return(
         <div className = "printing">
             <h1>
+                Hp: {player.hp}
+            </h1>
+            <br/>
+            
+            <h1>
                 Gold earned: {value}
             </h1>
             <br/>
