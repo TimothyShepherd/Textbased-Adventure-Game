@@ -40,6 +40,7 @@ export function MockFight(props)  {
         if(newhp<=0){
             newhp = 0
             dispatch({ type: 'addXp', payload: enemy.xp })
+            dispatch({ type: 'addGold', payload: enemy.gold })
             newxp = 0;      
         }
         let newenemy=({...enemy,hp:newhp,xp:newxp})

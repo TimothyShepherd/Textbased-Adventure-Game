@@ -60,25 +60,29 @@ const initialState = {
             name:"Jest",
             hp:50,
             weapon:"fists",
-            xp:50
+            xp:50,
+            gold:20
         },
         Bucaneer:{
             name:"Javaneer",
             hp:75,
             weapon:"knife",
-            xp:60
+            xp:60,
+            gold:30
         },
         First_Mate:{
             name:"First M8",
             hp:80,
             weapon:"boxing_gloves",
-            xp:80
+            xp:80,
+            gold:50
         },
         Pirate_lord:{
             name:"BlueBeard",
             hp:100,
             weapon:"sword",
-            xp:0
+            xp:0,
+            gold:100
         },
         current:{
             name:"Jest",
@@ -102,6 +106,13 @@ const counterModify = (state = initialState, action) => {
     }
     if (action.type === "decrement") {
         return { ...state, gold: state.gold - 1 };
+    }
+
+    if (action.type === "addGold") {
+        return { ...state, gold: state.gold + action.payload };
+    }
+    if (action.type === "removeGold") {
+        return { ...state, gold: state.gold - action.payload };
     }
 
     //Player Movement
