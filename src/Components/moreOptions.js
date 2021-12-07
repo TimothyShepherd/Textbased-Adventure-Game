@@ -26,7 +26,7 @@ const Options2 = () => {
     return (
         <div >
             <h1>Your current weapon is: {player.currentWeapon}</h1>
-            <select onChange={weaponSelect} id="weapon">
+            <select onChange={weaponSelect} value={currentWeapon} id="weapon">
                 {
                     Object.keys(inventory).map((weapon) =>
                         <option key={weapon} value={weapon}>{weapon}</option>

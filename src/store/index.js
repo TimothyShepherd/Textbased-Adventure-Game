@@ -4,6 +4,7 @@ import { createStore } from "redux";
 const initialState = {
     gold: 0,
     player: {
+        currentTile:"general",
         hp:100,
         x: 0,
         y: 0,
@@ -49,8 +50,8 @@ const initialState = {
         counter: { attMul: 1, defMul: 1.5, spd: 2 },
 
         //Fist and boxing_gloves
-        punch: { attMul: .5, defMul: .8, spd: 1 },
-        jab: { attMul: .3, defMul: .9, spd: 1.5 },
+        punch: { attMul: .5, defMul: 1, spd: 1 },
+        jab: { attMul: .3, defMul: 1.2, spd: 1.5 },
         overhead: { attMul: 2, defMul: .6, spd: .5 }
     },
     //On defeat, drop weapon and 
@@ -78,7 +79,13 @@ const initialState = {
             hp:100,
             weapon:"sword",
             xp:0
-        }
+        },
+        current:{
+            name:"Jest",
+            hp:50,
+            weapon:"fists",
+            xp:50
+    }
     }
     
 
@@ -196,6 +203,24 @@ const counterModify = (state = initialState, action) => {
         return { ...state, player }
     }
 
+    if (action.type === "tile") {
+        let value = action.payload
+        let player = { ...state.player, currentTile: value }
+        return { ...state, player }
+    }
+
+    if(action.type === "dmgEnemy"){
+        let value = action.payload
+        let enemies = {...state.enemies,current:value}
+        return {...state,enemies}
+    }
+
+    if(action.type ==="setEnemy"){
+        let value = state.enemies[action.payload];
+        let enemies = {...state.enemies, current:value}
+        return {...state,enemies}
+
+    }
 
     return state;
 }
