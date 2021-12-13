@@ -25,6 +25,7 @@ export function Par()  {
 
     function setEnemy(e){
         dispatch({ type: 'setEnemy', payload: e.target.value })
+        dispatch({ type: 'tile', payload: "enemy" })
     }
 
     return (

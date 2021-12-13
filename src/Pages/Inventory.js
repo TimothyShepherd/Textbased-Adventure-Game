@@ -1,8 +1,9 @@
 import {React,useEffect} from 'react';
 
-import Options2 from '../Components/moreOptions.js';
+
 import { useNavigate } from 'react-router-dom';
 import { useSelector, useDispatch } from "react-redux";
+import Info from '../Components/characterInfo.js';
 
 export function Inv()  {
     const navigate = useNavigate();
@@ -23,7 +24,7 @@ export function Inv()  {
             <h2 className="App-header">This set of buttons change conditions and send you to fight "Auto redirection based on conditions"</h2>
                 <input type="button" value="redirect to fight -if- its present" onClick={redirectFight}/>
                 <input type="button" value="redirect to Shop -if- its present" onClick={redirectShop}/>
-            <Options2/>
+            <Info/>
         </div>
     )
 }
