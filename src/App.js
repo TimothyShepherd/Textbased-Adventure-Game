@@ -28,7 +28,7 @@ function App() {
     {/*<Link className="links" to="/shop">Shop</Link>*/}
     {/*<Link className="links" to="/records">Records</Link>*/}
         <Routes>
-          
+        <Route path="/" element={<MapManage />} />          
           <Route path="/test_data" element={<Par />} />          
           <Route path="/map_manage" element={<MapManage />} />          
           <Route path="/test_fight" element={<MockFight />} /> 
