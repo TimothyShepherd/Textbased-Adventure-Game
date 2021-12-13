@@ -2,7 +2,7 @@ import {React,useEffect} from 'react';
 
 import Buttonks from './buttonsStore';
 import Options2 from './moreOptions';
-import BTNOutput from './TypeScript Start/Output';
+import BTNOutput from './Output/Output';
 import { useNavigate } from 'react-router-dom';
 import { useSelector, useDispatch } from "react-redux";
 
@@ -10,14 +10,6 @@ export function Par()  {
     const navigate = useNavigate();
     const player = useSelector(state => state.player)
     const dispatch = useDispatch();
-
-    useEffect(() => {
-        // Update the document title using the browser API
-        if(player.currentTile=="enemy"){
-        navigate('/test_fight');
-        }
-        console.log("parent useEffect")
-      },[player.currentTile]);
 
     const redirect=()=>{
         dispatch({ type: 'tile', payload: "enemy" })

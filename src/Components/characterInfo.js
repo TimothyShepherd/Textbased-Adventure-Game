@@ -1,5 +1,5 @@
 import { useDispatch, useSelector } from "react-redux";
-import BTNOutput from './TypeScript Start/Output';
+import BTNOutput from './Output/Output';
 
 //Define a component that will use dispatcher
 //Note we require an import

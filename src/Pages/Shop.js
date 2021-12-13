@@ -1,4 +1,4 @@
-import {React,useState} from 'react';
+import {React,useState,useEffect} from 'react';
 
 import Options2 from '../Components/moreOptions.js';
 import { useNavigate } from 'react-router-dom';
@@ -20,6 +20,13 @@ export function Shop()  {
         delete it.fists
         setItems(it)
     }
+
+    useEffect(() => {
+        // Update the document title using the browser API
+        if (player.currentTile == "general") {
+           navigate('/map_manage');
+        }
+    }, [player]);
 
     const dispatch = useDispatch();
     const redirect = ()=>{
@@ -69,6 +76,11 @@ export function Shop()  {
         }
     }
 
+    const exitStore=()=>{
+        dispatch({ type: 'setTile', payload: "general" })
+        dispatch({ type: 'tile', payload: "general" })
+    }
+
      //Inventory
      const payloadAdd = (e) => {
         let x = e
@@ -92,6 +104,7 @@ export function Shop()  {
                 <ol>{Object.keys(potions).map((key)=><li>{key}: <span></span> <button onClick={buyPotion} name={key}>{potions[key]}</button></li>)}</ol>
             
                 <h3 id="goldAlert">Buy something!!</h3>
+                <input type="button" value="Get Outta Here!" onClick={exitStore}/>
         </div>
     )
 }

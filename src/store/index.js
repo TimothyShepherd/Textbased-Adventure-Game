@@ -1,8 +1,10 @@
 import { createStore } from "redux";
+import { MockFight } from "../Pages/Mock_fight";
 
 //Initialize the STATE/STORE
 const initialState = {
     gold: 0,
+    random: 1,
     player: {
         currentTile: "general",
         hp: 100,
@@ -12,6 +14,7 @@ const initialState = {
         inventory: {
             //These can't be sold
             fists: 2,
+            boxing_gloves: 1
         },
         xp: {
             level: 1,
@@ -26,19 +29,19 @@ const initialState = {
     },
     items: {
         fists: {
-            att: 5, def: 5, spd: 20,
+            att: 7, def: 5, spd: 20,
             skills: ["punch", "jab", "defend"]
         },
         sword: {
             att: 10, def: 12, spd: 10,
-            skills: ["stab", "slice","strike", "parry"]
+            skills: ["stab", "slice", "strike", "parry"]
         },
         axe: {
             att: 15, def: 5, spd: 8,
             skills: ["strike", "slice", "smash", "defend"]
         },
         boxing_gloves: {
-            att: 8, def: 15, spd: 15,
+            att: 10, def: 10, spd: 15,
             skills: ["punch", "jab", "strike", "roll"]
         },
         knife: {
@@ -109,6 +112,62 @@ const initialState = {
         large: 50,
         medium: 30,
         small: 10,
+    },
+    events: {
+        1: {
+            title: "You fell and got somewhat hurt. However, you noticed a knife and some gold on the ground and decided to pick them up.",
+            effects: {
+                a: { type: "hpDec", value: 10 },
+                b: { type: "addGold", value: 40 },
+                c: { type: "addItem", value: "knife" }
+            }
+        },
+        2: {
+            title: "You noticed some pirate too drunk to get on his feet. You offer to carry his goodies for him and he accepts. What a chump.",
+            effects: {
+                a: { type: "addItem", value: "axe" },
+                b: { type: "addGold", value: 10 }
+            }
+        },
+        3: {
+            title: "While sneaking by, you stumble into someone's secret stash. Even the food seems edible. How ironic.",
+            effects: {
+                a: { type: "addItem", value: "sword" },
+                b: { type: "addGold", value: 20 },
+                c: { type: "hpInc", value: 20 }
+            }
+        }
+    },
+    tiles:{
+        0:{0:"general",1:"general"},
+        1:{
+            0:"event",
+            1:"event"
+        },
+        2:{
+            0:"enemy",
+            1:"enemy",name:"Jester"
+        },
+        3:{
+            0:"shop",
+            1:"event"
+        },
+        4:{
+            0:"enemy",
+            1:"enemy",name:"Bucaneer"
+        },
+        5:{
+            0:"shop",
+            1:"event"
+        },
+        6:{
+            0:"enemy",
+            1:"enemy",name:"First_Mate"
+        },
+        7:{
+            0:"enemy",
+            1:"enemy",name:"Pirate_lord"
+        }
     }
 
 
@@ -119,6 +178,19 @@ const initialState = {
 const counterModify = (state = initialState, action) => {
     //Check the action type to know what function to change
     //General
+    if (action.type === "setTile") {
+        console.log(action.payload)
+        let t = state.tiles
+        let state2 ={ ...state, tiles:{...t,[state.player.x]:{...t[state.player.x],[state.player.y]:action.payload }} } 
+        console.log(state2)
+        return state2;
+        
+    }
+    if (action.type === "setRandom") {
+        console.log(action.payload)
+        return { ...state, random: action.payload };
+        
+    }
 
     if (action.type === "increment") {
         return { ...state, gold: state.gold + 1 };
@@ -130,6 +202,7 @@ const counterModify = (state = initialState, action) => {
     if (action.type === "addGold") {
         return { ...state, gold: state.gold + action.payload };
     }
+    
     if (action.type === "removeGold") {
         return { ...state, gold: state.gold - action.payload };
     }
@@ -244,7 +317,7 @@ const counterModify = (state = initialState, action) => {
     }
     //Reduce player HP by payload amount
     if (action.type === "hpDec") {
-        let value = Math.trunc((state.player.hp - action.payload)*100)/100
+        let value = Math.trunc((state.player.hp - action.payload) * 100) / 100
         if (value < 0) { value = 0 }
         let player = { ...state.player, hp: value }
         return { ...state, player }
@@ -279,7 +352,7 @@ const counterModify = (state = initialState, action) => {
         let eWeaponName = state.enemies.current.weapon;
         let eWeapon = state.items[eWeaponName];
         let min = 0;
-        let max = eWeapon.skills.length 
+        let max = eWeapon.skills.length
         let random = Math.floor(Math.random() * (max - min) + min);
         let enemies = { ...state.enemies, current: { ...state.enemies.current, ability: random } }
         return { ...state, enemies }

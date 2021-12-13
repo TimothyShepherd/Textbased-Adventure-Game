@@ -13,13 +13,25 @@ export function MockFight(props) {
     const abilities = state.abilities;
     useEffect(() => {
         // Update the document title using the browser API
-        if (player.currentTile == "none") {
-            navigate('/test_data');
+        if (player.currentTile == "general") {
+            navigate('/map_manage');
+        }
+        if (player.currentTile == "event") {
+            dispatch({ type: 'setTile', payload: "general" })
+            dispatch({ type: 'tile', payload: "general" })
+            navigate('/map_manage');
+        }
+        if (player.currentTile == "records") {
+            navigate('/records');
+        }
+        if (player.currentTile == "lose") {
+            console.log("active")
+            navigate('/lose');
         }
     }, [player]);
 
     const mapExit = () => {
-        dispatch({ type: 'tile', payload: "none" })
+        dispatch({ type: 'tile', payload: "general" })
     }
     const hpInc = () => {
         dispatch({ type: 'hpInc', payload: 100 })
@@ -30,12 +42,13 @@ export function MockFight(props) {
     }
 
     const action = (e) => {
+
         //as String
         let current = e.target.value
         let plyrSPD = speed(player.currentWeapon, current)
         let enemySPD = speed(enemy.weapon, items[enemy.weapon].skills[enemy.ability])
-        
-            //Returns the new total HP
+
+        //Returns the new total HP
         let newhp = damageToEnemy(current)
         newhp = parseInt(newhp).toFixed(1)
         let newxp = enemy.xp
@@ -44,11 +57,18 @@ export function MockFight(props) {
             dispatch({ type: 'addXp', payload: enemy.xp })
             dispatch({ type: 'addGold', payload: enemy.gold })
             newxp = 0;
-            dispatch({ type: 'tile', payload: "none" })
+            if (enemy.name == "BlueBeard") {
+                dispatch({ type: 'setTile', payload: "records" })
+                dispatch({ type: 'tile', payload: "records" })
+            }
+            else {
+                dispatch({ type: 'setTile', payload: "general" })
+                dispatch({ type: 'tile', payload: "general" })
+            }
         }
-        
+
         let newenemy = ({ ...enemy, hp: newhp, xp: newxp })
-        
+
         dispatch({ type: 'dmgEnemy', payload: newenemy })
         dispatch({ type: 'setEnemyMove' });
 
@@ -56,7 +76,7 @@ export function MockFight(props) {
 
         //Does defense apply? Must be done this exact way, comparing the values directly sometimes causes java to -mess up- 
         //in the following absurd way: "5<4 is true" 
-        let difference = (plyrSPD-enemySPD)
+        let difference = (plyrSPD - enemySPD)
         if (difference >= 0) {
             playerDmg = playerDmg - defense(player.currentWeapon, current);
         }
@@ -64,8 +84,10 @@ export function MockFight(props) {
         if (playerDmg < 0) {
             playerDmg = 1;
         }
-        console.log(playerDmg)
-
+        if(playerDmg>player.hp){
+                dispatch({ type: 'setTile', payload: "lose" })
+                dispatch({ type: 'tile', payload: "lose" })
+        }
 
         dispatch({ type: 'hpDec', payload: playerDmg })
 
@@ -75,20 +97,20 @@ export function MockFight(props) {
         let att = items[player.currentWeapon].att
         let attMul = abilities[current].attMul
         let damage = attMul * att
-        
+
         let plyrSPD = speed(player.currentWeapon, current)
         let enemySPD = speed(enemy.weapon, items[enemy.weapon].skills[enemy.ability])
-        if(enemySPD>plyrSPD){
+        if (enemySPD > plyrSPD) {
             damage = damage - defense(enemy.weapon, items[enemy.weapon].skills[enemy.ability])
         }
-        
-        if(damage<0){
-            damage=2;
+
+        if (damage < 0) {
+            damage = 2;
         }
 
         let newhp = ((enemy.hp - damage)).toFixed(1)
 
-        
+
 
         return newhp;
     }
@@ -118,6 +140,10 @@ export function MockFight(props) {
         return (items[weapon].spd * abilities[ability].spd).toFixed(1)
     }
 
+    function Invent() {
+        navigate("/inventory")
+    }
+
     return (
         <div>
             <div className="enemy">
@@ -141,8 +167,6 @@ export function MockFight(props) {
                     <li>weapon:{player.currentWeapon}</li>
                 </ol>
             </div>
-            <button onClick={hpInc} className="btn btn-primary"> Raise hp by 100</button>
-            <button onClick={hpDec} className="btn btn-danger"> Remove hp by 20</button><br /><br />
             <h2>List weapon abilities: </h2><ol>
                 Ability values
                 {items[player.currentWeapon].skills.map((c) => <li key={c}>{"\t" + c + ":" + "damage: " + damage(player.currentWeapon, c) + ", defend: " + defense(player.currentWeapon, c) + ", speed: " + speed(player.currentWeapon, c)}
@@ -155,7 +179,7 @@ export function MockFight(props) {
 
             </ol>
 
-            <input type="button" value="Exit to Map" onClick={mapExit} />
+            <input type="button" value="Go to Inventory" onClick={Invent} />
         </div>
     )
 }
