@@ -22,24 +22,19 @@ export function Par()  {
 
     return (
         <div>
-            
-            <h2 className="App-header">This set of buttons change conditions and send you to fight "Auto redirection based on conditions"</h2>
+            {/* This set of buttons change conditions and send you to fight "Auto redirection based on conditions" */}
                 <input type="button" value="redirect to fight -if- its present" onClick={redirect}/>
                 <input type="button" value="Jester" onClick={setEnemy}/>
                 <input type="button" value="Bucaneer" onClick={setEnemy}/>
                 <input type="button" value="First_Mate" onClick={setEnemy}/>
                 <input type="button" value="Pirate_lord" onClick={setEnemy}/>
-            <h2 className="App-header">This is a set of buttons that make an example of how to acquire and modify player variables
+            {/* This is a set of buttons that make an example of how to acquire and modify player variables
                 BTNOutput has the way of acquiring data
-                Buttonks has the way of modifying data
-                
-            </h2>
+                Buttonks has the way of modifying data */}
             <BTNOutput/>
             <Buttonks/>
-            <h2 className="App-header">The following allows access and printing of crucial stats for the weapons. Allows for weapon switching
-                and displays the skills each item allows, as well as the multiplier each one has.
-
-            </h2>
+            {/* The following allows access and printing of crucial stats for the weapons. Allows for weapon switching
+                and displays the skills each item allows, as well as the multiplier each one has. */}
             <Options2/>
         </div>
     )

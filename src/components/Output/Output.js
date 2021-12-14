@@ -8,20 +8,20 @@ const BTNOutput=()=>{
     return(
         <div className = "printing">
             <h1>
-                Hp: {player.hp}
+                HP: {player.hp}
             </h1>
             <br/>
             
             <h1>
-                Gold earned: {value}
+                Gold Earned: {value}
             </h1>
             <br/>
             <h1>
-                Position x: {player.x}
+                Position X: {player.x}
             </h1>
             <br/>
             <h1>
-                Position y: {player.y}
+                Position X: {player.y}
             </h1>
             <br/>
             <h1>
@@ -34,7 +34,7 @@ const BTNOutput=()=>{
             </h1>
             <br/>
             <h1>
-                Current amount of XP (leves on 100): {player.xp.number}
+                Current amount of XP: {player.xp.number} of 100
             </h1>
 
         </div>

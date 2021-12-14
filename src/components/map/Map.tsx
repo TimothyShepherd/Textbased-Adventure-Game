@@ -115,6 +115,7 @@ export default class Map extends React.Component {
             alignItems: "center",
             padding: "50px",
             height: "100%",
+            margin: "50px"
           }}
         >
           <canvas

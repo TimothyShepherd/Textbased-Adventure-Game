@@ -35,9 +35,11 @@ export function Evt()  {
 
     return (
         <div>
-            <h2 className="App-header">An Event has ocurred</h2>
+            <h2 className="App-header" style={{fontSize: "50px", margin: "40px", fontWeight: "bold"}}>An Event Has Ocurred:</h2>
+            <div className="container">
             <h3>{event.title}</h3>
-                <input type="button" value="Continue" onClick={next}/>
+            </div>
+                <button className="btn btn-light" onClick={next} style={{fontSize: "30px", margin: "40px"}}>Continue</button>
         </div>
     )
 }

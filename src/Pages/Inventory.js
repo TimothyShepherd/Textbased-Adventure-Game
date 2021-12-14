@@ -1,6 +1,5 @@
 import React, {useEffect} from 'react';
 
-
 import { useNavigate } from 'react-router-dom';
 import { useSelector, useDispatch } from "react-redux";
 import Info from '../Components/characterInfo.js';
@@ -31,9 +30,16 @@ export function Inv()  {
 
     return (
         <div>
-            <h2 className="App-header">This set of buttons change conditions and send you to fight "Auto redirection based on conditions"</h2>
+            {/* This set of buttons change conditions and send you to fight "Auto redirection based on conditions" */}
             <Info/>
-            <input type="button" value="Go Back" onClick={Back} />
+            <button className="btn btn-danger" onClick={Back} style={{
+                fontSize: "30px",
+                margin: "25px",
+                fontFamily: "revert",
+                fontWeight: "bold",
+                textShadow: "2px 1px 2px black",
+                borderColor: "black"
+            }}>Continue Journey</button>
         </div>
     )
 }

@@ -69,10 +69,18 @@ export function MapManage() {
 
   return (
     <div>
-      <BInfo />
-      <h1>{state.tiles[player.x][player.y]}</h1>
       <MovementB />
-      <input type="button" value="Go to Inventory" onClick={Invent} />
+      <BInfo />
+      {/* <h1>{state.tiles[player.x][player.y]}</h1> */}
+      
+      <button type="button" className="btn btn-danger" onClick={Invent} style={{
+        fontSize: "30px",
+        margin: "25px",
+        fontFamily: "revert",
+        fontWeight: "bold",
+        textShadow: "2px 1px 2px black",
+        borderColor: "black"
+      }}>Go to Inventory</button>
     </div>
   );
 }

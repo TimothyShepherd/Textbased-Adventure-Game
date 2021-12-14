@@ -71,8 +71,21 @@ const MovementB = () => {
 
     return (
         <div className="printing">
-            <button onClick={backY} className="btn btn-primary"> Move in Upper Lane</button><br /><br />
-            <button onClick={moveY} className="btn btn-danger"> Move in Lower Lane</button><br /><br />
+            <button onClick={backY} className="btn btn-info" style={{
+                fontSize: "35px",
+                fontFamily: "revert",
+                fontWeight: "bold",
+                margin: "15px",
+                textShadow: "2px 1px 2px white",
+                borderColor: "black"
+        }}>Move Up</button>
+            <button onClick={moveY} className="btn btn-info" style={{
+                fontSize: "35px",
+                fontFamily: "revert",
+                fontWeight: "bold",
+                textShadow: "2px 1px 2px white",
+                borderColor: "black"
+                }}>Move Down</button><br /><br />
             
         </div>
     )
