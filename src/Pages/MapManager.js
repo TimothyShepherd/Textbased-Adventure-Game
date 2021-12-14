@@ -70,7 +70,16 @@ export function MapManage() {
   return (
     <div>
       <MovementB />
+      <div className="container" style={{
+      background: "rgb(24, 24, 24)",
+          border: "3px solid",
+          borderRadius: "10px",
+          borderColor: "black",
+          padding: "10px",
+          paddingTop: "25px"
+      }}>
       <BInfo />
+      </div>
       {/* <h1>{state.tiles[player.x][player.y]}</h1> */}
       
       <button type="button" className="btn btn-danger" onClick={Invent} style={{
