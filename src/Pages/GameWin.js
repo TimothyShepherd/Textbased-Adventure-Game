@@ -17,8 +17,8 @@ export function Records() {
         // Update the document title using the browser API
         let t = player.currentTile;
         if (t != "records") {
-        //dispatch({ type: 'tile', payload: t })
-        //navigate('/map_manage');
+        dispatch({ type: 'tile', payload: t })
+        navigate('/map_manage');
         }
     }, [counter]);
 
