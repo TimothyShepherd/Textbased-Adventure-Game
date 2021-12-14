@@ -9,6 +9,45 @@
   }
 }
 
+table,thead,th  {
+  border :2px solid black;
+  animation: bgColor 10s infinite alternate;
+  font-size:20px;
+  margin:auto;
+  color:white;
+  background-color: black;
+}
+/*https://stackoverflow.com/questions/39725592/loop-div-background-color-through-all-rainbow-colors-gradually-css*/
+@keyframes bgColor {
+  0% {
+    border :1px solid black;
+  }
+12.5% {
+  border :2px solid #FF0000;
+}
+25% {
+  border :2px solid #FFA500;
+}
+37.5% {
+  border :2px solid #FFFF00;
+}
+50% {
+  border :2px solid #7FFF00;
+}
+62.5% {
+  border :2px solid #00FFFF;
+}
+75% {
+  border :2px solid #0000FF;
+}
+87.5% {
+  border :2px solid #9932CC;
+}
+100% {
+  border :2px solid #2c0218;
+}
+}
+
 .links {
   margin:10px;
 }

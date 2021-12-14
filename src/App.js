@@ -19,7 +19,6 @@ function App() {
 
  return (
   <div className="App">
-    <Router>
     {/*<Link className="links" to="/test_data">Test Data</Link>*/}
     {/*<Link className="links" to="/map_manage">Map Screen</Link>*/}
     {/*<Link className="links" to="/test_fight">Test Fight</Link>*/}
@@ -27,6 +26,7 @@ function App() {
     {/*<Link className="links" to="/event">Event</Link>*/}
     {/*<Link className="links" to="/shop">Shop</Link>*/}
     {/*<Link className="links" to="/records">Records</Link>*/}
+    <Router>
         <Routes>
         <Route path="/" element={<MapManage />} />          
           <Route path="/test_data" element={<Par />} />          
