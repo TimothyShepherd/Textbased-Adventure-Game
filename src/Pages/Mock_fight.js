@@ -157,6 +157,13 @@ export function MockFight(props) {
   }
 
   return (
+      <div className="container" style={{
+        background: "rgb(24, 24, 24)",
+        border: "3px solid",
+        borderRadius: "10px",
+        borderColor: "black",
+        padding: "10px"
+        }}>
     <div style={{ background: "rgb(24, 24, 24)", textTransform: "uppercase" }}>
       <div className="enemy">
         <h2
@@ -282,6 +289,7 @@ export function MockFight(props) {
 
       <br />
       <br />
+    </div>
     </div>
   );
 }

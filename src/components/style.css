@@ -3,3 +3,7 @@
     font-family: recurse;
     text-shadow: 1px 0.5px 1px gray;
 }
+
+.caret {
+    border-top: 4px solid red;
+}

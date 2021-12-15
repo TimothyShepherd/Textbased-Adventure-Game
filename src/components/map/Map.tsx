@@ -24,7 +24,7 @@ export default class Map extends React.Component {
   static floorSet: number;
   static game: any;
   static flag: boolean;
-  
+
   constructor(props: number) {
     super(props);
 
@@ -34,7 +34,7 @@ export default class Map extends React.Component {
       floor: 0,
       cycle: 0,
     };
-    console.log(props)
+    console.log(props);
     this.canvasRef = React.createRef();
 
     // * (x * y) becomes the mapSize
@@ -52,7 +52,6 @@ export default class Map extends React.Component {
     this.tiles = this.state.setMap.tileMaps[this.state.floor][this.state.cycle];
   }
 
-  
   // * j becomes index of x
   // * k becomes index of y
   getTile(j: any, k: any) {
@@ -63,14 +62,14 @@ export default class Map extends React.Component {
     Map.cycleSet = c;
     Map.floorSet = f;
     Map.game.call(Map.cycleSet, Map.floorSet);
-  }
+  };
 
   static getMap = () => {
     return this;
-  }
+  };
 
   renderGame = () => {
-      Map.game.render();
+    Map.game.render();
   };
 
   getContext = () => this.canvasRef.current.getContext("2d");
@@ -103,8 +102,9 @@ export default class Map extends React.Component {
 
   render() {
     return (
-      <div>
+      <div style={{ display: "flex", justifyContent: "center" }}>
         <div
+          className="container"
           style={{
             // Map styling properties
             background:
@@ -112,10 +112,12 @@ export default class Map extends React.Component {
             backgroundBlendMode: "multiply",
             display: "flex",
             justifyContent: "center",
-            alignItems: "center",
             padding: "50px",
             height: "100%",
-            margin: "50px"
+            margin: "30px",
+            border: "3px solid",
+            borderRadius: "10px",
+            borderColor: "black",
           }}
         >
           <canvas
