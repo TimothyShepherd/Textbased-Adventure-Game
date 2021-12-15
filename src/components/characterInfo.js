@@ -59,14 +59,14 @@ const Info = () => {
               HP: {player.hp}
               <br />
               ---------------------------------
-              <h2 style={{ fontSize: "35px", marginTop: "10px" }}>Potions:</h2>
+              <h2 style={{ marginTop: "10px", fontWeight: "bold" }}>Potions:</h2>
               <div>
                 <div className="container">
                   <div className="row">
                     {Object.keys(player.potions).map((key) => (
                       <div className="col-lg-4">
                         <b style={{ fontSize: "17px" }}>
-                          {key}: {player.potions[key]}
+                          {key}: {player.potions[key]}<br />
                           <button
                             className="btn"
                             name={key}
@@ -95,9 +95,9 @@ const Info = () => {
               Gold earned: {state.gold}
               <br />
               ---------------------------------
-              <div className="container" style={{ paddingTop: "15px" }}>
+              <div className="container" style={{ paddingTop: "5px" }}>
                 <div className="row">
-                  <h1 style={{ marginLeft: "5px" }}>Weapon: </h1>
+                  <h1 style={{ marginLeft: "5px", fontWeight: "bold" }}>Weapon: </h1>
                   <select
                     className="form-select"
                     aria-label="Default select example"
@@ -119,13 +119,13 @@ const Info = () => {
                     ))}
                   </select>
                   <br />
-                  <h2>Stats: </h2>
+                  <h2 style={{fontWeight: "bold"}}>Stats: </h2>
                   {Object.keys(currentWeaponStats).map((key) => (
                     <li key={key}>
                       {key}: {currentWeaponStats[key]}
                     </li>
                   ))}
-                  <h2>Abilities: </h2>
+                  <h2 style={{marginTop: "15px", fontWeight: "bold"}}>Abilities: </h2>
                   {
                     items[currentWeapon].skills.map((c) => (
                       <li key={c}>
@@ -154,7 +154,7 @@ const Info = () => {
               <br />
               ---------------------------------
               <br />
-              XP: {player.xp.number} of 100
+              <h1 style={{fontWeight: "bold", marginTop: "5px"}}>EXPERIENCE:</h1> {player.xp.number} of 100
             </p>
           </div>
         </div>
