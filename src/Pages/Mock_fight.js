@@ -248,13 +248,13 @@ export function MockFight(props) {
                         </button>
                         <br />
                         {"\t" +
-                          "Damage: " +
+                          "DAMAGE: " +
                           damage(player.currentWeapon, c) +
                           "\n" +
-                          "Defence: " +
+                          "DEFENSE: " +
                           defense(player.currentWeapon, c) +
                           "\n" +
-                          "Speed: " +
+                          "SPEED: " +
                           speed(player.currentWeapon, c)}
                         &nbsp;
                       </b>
