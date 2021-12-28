@@ -1,20 +1,11 @@
 # Welcome to our experimental text-based adventure game, Escape from Pirate Ship.
-> The purpose of this project was to create a 
-> This project was developed using Visual Code, Java and SQL
-> Session management is done by using cookies
-
+> The purpose of this project was to create a playable game using only React with Spring Boot as the back-end.
 
 ## Requirements
-x
-* x
-* x
-* x
-
-MANAGER
-* x
-* x
-* x
-* x
+* Spring Boot
+* Java JDK v11+
+* An IDE like (Eclipse or IntelliJ Idea) capable of finding the required dependencies using Maven
+* NodeJS
 
 ## Technologies used
 * SQL
@@ -22,15 +13,16 @@ MANAGER
 * Java
 * Servlets
 * HTML
-* CSS (bootstrap recommended)
+* CSS / Bootstrap
 * JavaScript
+* Spring Boot
+* React
+* Typescript
 
 ## Usage 
-> After installing the relevant packages, the servlet must be ran in Java using a Tomcat 8.0 server
-> The servlets must continue to run to give functionality and responsiveness to the program
-> The servlet automatically redirects to required pages and through actions taken
-> index.html is the starting page
-> After logging in as employee, several options appear for submitting or checking tickets
-> After logging in as manager, several options appear for managing ticket submissions or checking the history
-
-# The program automatically checks for cookies so the browser MUST accept them or logging in is not possible, and the program will not work.
+> After cloning this repository please navigate into the Spring folder and open it with your preferred Java compiler-capable IDE.
+> Create a MySQL database and adjust the application.properties / yml file to match your preferred database name and credentials.
+> Once the Spring Boot server has started and created the initial tables, open your preferred terminal emulator and navigate to the parent directory of the project.
+> Run the commands "npm install" and "npm start" to begin the game in a new browser tab.
+> Refreshing the page at any time will start a new game.
+> Enjoy! :)
